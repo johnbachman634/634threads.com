@@ -1,0 +1,37 @@
+name: deploy
+
+# No paths filter on purpose: pre-launch amends force-push a rewritten root
+# commit, and GitHub can't diff those ("no common ancestor"), which silently
+# skips path-filtered runs. Every milestone push deploys; that's the model.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      BUCKET: ${{ secrets.BUCKET }}
+      DISTRIBUTION_ID: ${{ secrets.DISTRIBUTION_ID }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - run: node build.mjs
+
+      - uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: us-east-1
+
+      - run: aws s3 sync dist/ "s3://$BUCKET" --delete
+
+      - run: aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --paths "/*"

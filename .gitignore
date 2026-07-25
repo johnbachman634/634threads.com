@@ -1,0 +1,12 @@
+# Local Claude Code config
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+
+dist/
+.DS_Store
+
+# Terraform local state/config (backend.hcl holds the real state-bucket name)
+infra/.terraform/
+infra/backend.hcl
+infra/*.tfstate*

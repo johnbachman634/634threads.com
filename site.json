@@ -1,0 +1,19 @@
+{
+  "domain": "634threads.com",
+  "url": "https://634threads.com",
+  "title": "Just You, Me, and Your Sysadmins",
+  "subtitle": "a love story in 634 threads",
+  "author": "John Bachman",
+  "authorUrl": "https://github.com/johnbachman634",
+  "sameAs": [],
+  "description": "I asked an AI 5,081 questions. Most were about women. The hard ones were about me. A serial novel, posted a chapter at a time.",
+  "tease": [
+    "I asked an AI 5,081 questions. Most were about women. The hard ones were about me.",
+    "This is the whole story, posted a chapter at a time. All of it true, none of it wise."
+  ],
+  "colophon": [
+    "© 2026 John Bachman. Every line in quotes is real: verbatim, dated, on file. Everyone is renamed, including me.",
+    "Hand-typed HTML, basically: no scripts, no trackers, no cookies."
+  ],
+  "comingNext": { "n": 1, "slug": "do-i-got-rhythm" }
+}
